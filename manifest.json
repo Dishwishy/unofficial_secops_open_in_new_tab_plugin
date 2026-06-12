@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "SecOps Rule Linker",
+  "version": "1.0.0",
+  "description": "Restores 'open in new tab' for rule names in the Google SecOps unified dashboard. Middle-click, Ctrl+click, or right-click rule names to open them in new tabs.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.backstory.chronicle.security/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["*://*.backstory.chronicle.security/*"]
+    }
+  ]
+}

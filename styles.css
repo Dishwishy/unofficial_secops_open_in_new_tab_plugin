@@ -1,0 +1,55 @@
+/*
+ * SecOps Rule Linker — Overlay Link Styles
+ *
+ * The overlay is an invisible <a> tag positioned on top of each rule name.
+ * It's transparent by default but shows a subtle underline on the underlying
+ * text on hover to signal "this is a link now".
+ */
+
+/* Overlay link: positioned absolutely over the rule name */
+a.rule-linker-overlay {
+  /* Transparent overlay — lets the underlying text show through */
+  color: transparent;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+
+  /* Positioning is set inline by JS, but defaults here for safety */
+  position: absolute;
+  z-index: 1;
+
+  /* No visual content */
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Hover state: show a subtle highlight to indicate linkability */
+a.rule-linker-overlay:hover {
+  background: rgba(138, 180, 248, 0.08);
+  border-radius: 2px;
+}
+
+/* When hovering the overlay, add an underline to the sibling text element */
+a.rule-linker-overlay:hover ~ sc-link-cell-component div.text.u-ellipsis,
+a.rule-linker-overlay:hover ~ div.cell div.text.u-ellipsis,
+a.rule-linker-overlay:hover ~ * div.text.u-ellipsis,
+a.rule-linker-overlay:hover ~ * div.link-text.u-ellipsis {
+  text-decoration: underline;
+  text-decoration-color: rgba(138, 180, 248, 0.6);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+/* Focus state for accessibility */
+a.rule-linker-overlay:focus-visible {
+  outline: 1px solid rgba(138, 180, 248, 0.6);
+  outline-offset: 0;
+  border-radius: 2px;
+}
+
+/* Visited state: no change */
+a.rule-linker-overlay:visited {
+  color: transparent;
+}
