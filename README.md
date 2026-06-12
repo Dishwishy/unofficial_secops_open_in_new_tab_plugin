@@ -9,3 +9,8 @@ This was largely vibecoded and then checked by Codemender (TM) to ensure it was 
 This currently only works for custom rules, as curated content is not editable. However, the name of the rule now acts as a hyperlink that you can CMD+click or right click to open in a new tab.
 
 ![screenshot](/plugin_example.png?raw=true "Example Screenshot")
+
+# Build/Pack
+git clone this repo and then zip it!
+
+`zip -r secops-rule-linker-v1.0.0.zip ./*`
